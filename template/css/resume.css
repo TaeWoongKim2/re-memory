@@ -5,6 +5,7 @@
  */
 .container-fluid.p-0.right{
     width: 70%;
+    float:right;
 }
 /*Minjae CSS START */
 
@@ -26,10 +27,26 @@
     color: #fff;
    
 }
-
 .social-icons{
     padding-top : 20px;
 }
+
+.login_form button {
+  width:100%;
+  padding: 6px 10px;
+  color: white;
+  border: none;
+  background-color: #007bff;
+}
+
+.login_form button > a:hover {
+ cursor: pointer;
+  background-color: #007bff;
+}
+
+.login_form a{font-size: 30px; color: #eee;}
+.login_form a.join{font-size:15px;}
+.login_form a:hover{ color:#eee;}
 /*Minjae CSS END */
 
 body {
