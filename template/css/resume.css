@@ -6,9 +6,36 @@
 .container-fluid.p-0.right{
     width: 70%;
 }
+/*Minjae CSS START */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.collapse.navbar-collapse ul,
+.collapse.navbar-collapse ul ol.blog_user{
+    padding: 0;
+    
+}
+.blog_user{
+    width: 100%;
+    color: #fff;
+    font-size: 25px;
+}
+.blog_description{
+    width: 100%;
+    text-align: center;
+    padding: 10px 10% 0px 10%;
+    overflow-x: hidden;
+    font-family : 'Open Sans';
+    color: #fff;
+   
+}
+
+.social-icons{
+    padding-top : 20px;
+}
+/*Minjae CSS END */
 
 body {
-  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: 'Open Sans', 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   padding-top: 54px;
   color: #868e96;
 }
@@ -63,14 +90,14 @@ p.lead {
 
 .social-icons a {
   display: inline-block;
-  height: 2.5rem;
-  width: 2.5rem;
-  background-color: #495057;
-  color: #fff !important;
+  height: 2rem;
+  width: 2rem;
+  background-color: #fff;
+  color: #000 ;
   border-radius: 100%;
   text-align: center;
   font-size: 1rem;
-  line-height: 2.5rem;
+  line-height: 2rem;
   margin-right: 1rem;
 }
 
@@ -79,7 +106,7 @@ p.lead {
 }
 
 .social-icons a:hover {
-  background-color: #BD5D38;
+  color: #aaa;
 }
 
 .dev-icons {
@@ -184,7 +211,8 @@ section.resume-section .resume-item .resume-date {
 }
 
 .bg-primary {
-  background-color: #BD5D38 !important;
+    background-size: 100% 100%;
+    
 }
 
 .text-primary {
