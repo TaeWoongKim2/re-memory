@@ -12,7 +12,7 @@
 .collapse.navbar-collapse ul,
 .collapse.navbar-collapse ul ol.blog_user{
     padding: 0;
-    
+
 }
 .blog_user{
     width: 100%;
@@ -25,7 +25,7 @@
     padding: 10px 10% 0px 10%;
     overflow-x: hidden;
     color: #fff;
-   
+
 }
 .social-icons{
     padding-top : 20px;
@@ -90,6 +90,24 @@ h3 {
 p.lead {
   font-size: 1.15rem;
   font-weight: 400;
+}
+
+.mainheading-icon {
+  margin-left: 0.5rem;
+  font-size: 25px;
+  float: right;
+}
+.edit-icon {
+  color: #343a40;
+}
+.edit-icon:hover {
+  color: #868e96;
+}
+.delete-icon {
+  color: #ff4141dd;
+}
+.delete-icon:hover {
+  color: #ff414155;
 }
 
 .maincontent {
@@ -246,7 +264,7 @@ section.resume-section .resume-item .resume-date {
 
 .bg-primary {
     background-size: 100% 100%;
-    
+
 }
 
 .text-primary {
