@@ -50,6 +50,15 @@ p.lead {
   font-weight: 400;
 }
 
+.mainheading {
+  float: left;
+}
+
+.maincontent {
+  margin-top: 5rem;
+  clear: both;
+}
+
 .subheading {
   text-transform: uppercase;
   font-weight: 500;
@@ -160,6 +169,14 @@ section.resume-section {
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
   max-width: 75rem;
+}
+
+section .resume-date {
+  float: right;
+}
+
+section .resume-item {
+  margin-top: 1rem!important;
 }
 
 section.resume-section .resume-item .resume-date {
