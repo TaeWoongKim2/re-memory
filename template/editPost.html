@@ -23,6 +23,9 @@
     <link href="css/editor-tap.css" rel="stylesheet">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open Sans:300,300italic,600,600italic|Roboto:700|Roboto:700&amp;subset=latin">
 
+    <!-- Vue JS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
     <!-- CK Editor 5 -->
     <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/balloon/ckeditor.js"></script>
@@ -67,70 +70,81 @@
       </div>
     </nav>
 
-    <div class="container-fluid p-0 right" >
-    <!--
-    CSS class="container-fluid p-0 right"
-    width: 80%;
-    float: right;
-    margin-right: 2.5rem!important;
-    -->
-      <section class="resume-section d-flex flex-column" id="experience">
+    <div class="container-fluid p-0">
+      <div class="container-fluid p-0 left"><hr></div>
 
-        <div class="tabbable-panel">
-  				<div class="tabbable-line">
-  					<ul class="nav nav-tabs ">
-  						<li class="active"><a href="#editor-classic" data-toggle="tab">Classic</a></li>
-  						<li><a href="#editor-ballon" data-toggle="tab">Ballon</a></li>
-  						<li><a href="#editor-inline" data-toggle="tab">Inline</a></li>
-  					</ul>
+      <div class="container-fluid p-0 right">
+      <!--
+      CSS class="container-fluid p-0 right"
+      width: 80%;
+      float: right;
+      margin-right: 2.5rem!important;
+      -->
+        <section class="resume-section d-flex flex-column" id="experience">
 
-  					<div class="tab-content">
-  						<div class="tab-pane active" id="editor-classic">
-                <textarea name="content" id="classic">This is some sample content.</textarea>
-                <script>
-                  ClassicEditor
-                    .create( document.querySelector( '#classic' ) )
-                    .then( editor => {
-                      console.log( editor );
-                    } )
-                    .catch( error => {
-                      console.error( error );
-                    } );
-                </script>
-  						</div>
+          <h3>게시판 수정</h3>
 
-  						<div class="tab-pane" id="editor-ballon">
-                <div id="ballon">This is some sample content.</div>
-                <script>
+          <div class="tabbable-panel">
+    				<div class="tabbable-line">
+    					<ul id="selectedCK" class="nav nav-tabs ">
+    						<li v-bind:class="{ active: selected == 1}" @click="selected = 1"><a href="#editor-classic" data-toggle="tab">Classic</a></li>
+    						<li v-bind:class="{ active: selected == 2}" @click="selected = 2"><a href="#editor-ballon" data-toggle="tab">Ballon</a></li>
+    						<li v-bind:class="{ active: selected == 3}" @click="selected = 3"><a href="#editor-inline" data-toggle="tab">Inline</a></li>
+    					</ul>
+              <script type="text/javascript">
+                new Vue({
+                  el: '#selectedCK',
+                  data: {
+                    selected: 1
+                  }
+                });
+              </script>
+
+    					<div class="tab-content">
+    						<div class="tab-pane active" id="editor-classic">
+                  <textarea name="content" id="classic">This is some sample content.</textarea>
+                  <script>
+                    ClassicEditor
+                      .create( document.querySelector( '#classic' ) )
+                      .then( editor => { console.log( editor ); })
+                      .catch( error => { console.error( error ); } );
+                  </script>
+    						</div>
+
+    						<div class="tab-pane" id="editor-ballon">
+                  <div id="ballon">This is some sample content.</div>
+                  <script>
                     BalloonEditor
-                        .create( document.querySelector( '#ballon' ) )
-                        .catch( error => {
-                            console.error( error );
-                        } );
-                </script>
-  						</div>
+                      .create( document.querySelector( '#ballon' ) )
+                      .catch( error => { console.error( error ); } );
+                  </script>
+    						</div>
 
-  						<div class="tab-pane" id="editor-inline">
-                <div id="inline">This is some sample content.</div>
-                <script>
-                InlineEditor
-                    .create( document.querySelector( '#inline' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
-                </script>
-  						</div>
+    						<div class="tab-pane" id="editor-inline">
+                  <div id="inline">This is some sample content.</div>
+                  <script>
+                    InlineEditor
+                      .create( document.querySelector( '#inline' ) )
+                      .catch( error => { console.error( error ); } );
+                  </script>
+    						</div>
 
-  					</div>
-  				</div>
-  			</div>
+    					</div>
+    				</div>
+    			</div>
+
+          <hr class="m-0">
+          <div>
+            <button class="flat-butt edit">수정</button>
+            <button class="flat-butt cancle">취소</button>
+          </div>
+        </section>
 
 
-      </section>
 
-      <hr class="m-0">
-
+      </div>
     </div>
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

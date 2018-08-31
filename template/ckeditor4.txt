@@ -1,0 +1,27 @@
+<!-- CK Editor 4 -->
+<script src="https://cdn.ckeditor.com/4.10.0/standard/ckeditor.js"></script>
+
+<li v-bind:class="{ active: selected == 1}" @click="selected = 1"><a href="#editor-classic" data-toggle="tab">Classic</a></li>
+<li v-bind:class="{ active: selected == 2}" @click="selected = 2"><a href="#editor-inline" data-toggle="tab">Inline</a></li>
+
+
+<div class="tab-content">
+    						<div class="tab-pane active" id="editor-classic">
+                  <textarea name="content" id="classic">This is some sample content.</textarea>
+                  <script>
+                    CKEDITOR.replace( 'classic', {
+                      filebrowserUploadUrl: '/upload',
+                    });
+                  </script>
+    						</div>
+
+    						<div class="tab-pane" id="editor-inline">
+                  <div id="inline" contenteditable="true">This is some sample content.</div>
+                  <script>
+                    CKEDITOR.disableAutoInline = true;
+                    CKEDITOR.inline( 'inline', {
+                      filebrowserUploadUrl: '/upload',
+                    });
+                  </script>
+    						</div>
+    					</div>
