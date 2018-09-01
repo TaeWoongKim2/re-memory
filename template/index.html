@@ -20,19 +20,19 @@
 
     <!-- Custom styles for this template -->
     <link href="css/resume.css" rel="stylesheet">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open Sans:300,300italic,600,600italic|Roboto:700|Roboto:700&amp;subset=latin">
 
   </head>
 
   <body id="page-top">
-
+        
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <div class="section top">
                 <form action="/search" method="get" class="search">
                     <input type="text" placeholder="Search..." name="q" value="">
+                    <svg class="search-icon" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><line class="st0" x1="10.5" y1="10.5" x2="15.3" y2="15.3"></line><circle class="st0" cx="6.8" cy="6.8" r="5.8"></circle></svg>
                 </form>
         </div>
-
+        
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
         <span class="d-none d-lg-block">
           <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
@@ -42,16 +42,31 @@
       <div class="collapse navbar-collapse login_form">
           <ul class="navbar-nav">
             <li class="nav-item">
-                <button><a href="">Login</a></button>
-                <a class="join" href="" >회원가입</a>
+                <a href="login.html">Login</a><br>
+                <a class="join" href="sign-up.html">회원가입</a>
             </li>
+              <div class="social-icons">
+                    <a href="#">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
           </ul>
       </div>
 
       <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul>
             <ol class="blog_user" id="">김태웅</ol>
-            <ol class="blog_description" id="">This is Woong & minjae & heejun's blog!! Have a Nice day~</ol>
+            <ol class="blog_description" id="">This is Woong & minjae & heejun's blog!! Have a Nice day~
+            </ol>
                 <div class="social-icons">
                     <a href="#">
                       <i class="fab fa-linkedin-in"></i>
@@ -69,8 +84,11 @@
           </ul>
         </div>-->
     </nav>
+      
     <div class="container-fluid p-0">
       <div class="container-fluid p-0 left"><hr></div>
+        
+        <!-- Main Page Content START -->
       <div class="container-fluid p-0 right">
 
         <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
@@ -167,7 +185,9 @@
         <hr class="m-0">
 
       </div>
+        <!-- Main Page Content END -->
     </div>
+    
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
