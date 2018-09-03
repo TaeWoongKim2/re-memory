@@ -36,6 +36,10 @@ body {
   padding: 2rem;
 }
 
+.gohome{
+    font-size: 18px;    
+}
+
 .form-signin {
   width: 100%;
 }
