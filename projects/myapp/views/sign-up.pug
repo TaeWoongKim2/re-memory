@@ -14,19 +14,19 @@ block content
               a(href='index.html')
                 i.fas.fa-home
             h5.card-title.text-center Register
-            form.form-signin
+            form.form-signin(method='post' action="/sign-up")
               .form-label-group
-                input#inputUserame.form-control(type='text' placeholder="Username" required autofocus)
+                input#inputUserame.form-control(type='text' name='username' placeholder="Username" required autofocus)
                 label(for='inputUserame') Username
               
               .form-label-group
-                input#inputEmail.form-control(type='email' placeholder='Email address' required)
-                label(for='inputEmail') Email address
+                input#inputID.form-control(type='text' name='id' placeholder='ID' required)
+                label(for='inputID') ID
 
               hr
 
               .form-label-group
-                input#inputPassword.form-control(type='password' placeholder='Password' required)
+                input#inputPassword.form-control(type='password' name='password' placeholder='Password' required)
                 label(for='inputPassword') Password
 
               .form-label-group
