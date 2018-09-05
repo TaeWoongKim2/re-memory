@@ -1,0 +1,362 @@
+/*!
+ * Start Bootstrap - Resume v5.0.1 (https://startbootstrap.com/template-overviews/resume)
+ * Copyright 2013-2018 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
+ */
+.container-fluid.p-0 {
+    float: left;
+}
+ .container-fluid.p-0.left {
+     width: 30%;
+ }
+.container-fluid.p-0.right {
+    width: 70%;
+}
+/*Minjae CSS START */
+.container.login_page{
+    display:none;
+
+}
+.container.signup_page{
+    display:none;
+}
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 120%;
+  border: 1px solid #00B4CC;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #000;
+}
+
+.searchButton {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  position: absolute;
+  top: 5%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.collapse.navbar-collapse ul,
+.collapse.navbar-collapse ul ol.blog_user{
+    padding: 0;
+
+}
+.blog_user{
+    width: 100%;
+    color: #fff;
+    font-size: 25px;
+}
+.blog_description{
+    width: 100%;
+    text-align: center;
+    padding: 10px 10% 0px 10%;
+    overflow-x: hidden;
+    color: #fff;
+
+}
+.social-icons{
+    padding-top : 20px;
+}
+
+.login_form button {
+  width:100%;
+  padding: 6px 10px;
+  color: white;
+  border: none;
+  background-color: #007bff;
+}
+
+.login_form button > a:hover {
+ cursor: pointer;
+  background-color: #007bff;
+}
+
+.login_form a{font-size: 30px; color: #eee;}
+.login_form a.join{font-size:15px;}
+.login_form a:hover{ color:#eee;}
+/*Minjae CSS END */
+
+body {
+  font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  padding-top: 54px;
+  color: #868e96;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    //padding-left: 17rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #343a40;
+}
+
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p.lead {
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.mainheading-icon {
+  margin-left: 0.5rem;
+  font-size: 25px;
+  float: right;
+}
+.edit-icon {
+  color: #343a40;
+}
+.edit-icon:hover {
+  color: #868e96;
+}
+.delete-icon {
+  color: #ff4141dd;
+}
+.delete-icon:hover {
+  color: #ff414155;
+}
+
+.maincontent {
+  //margin-top: 5rem;
+  margin-left: 0.7rem;
+  clear: both;
+}
+
+.maincontent-href {
+  float: right;
+}
+
+.subheading {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: 'Saira Extra Condensed', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1.2rem;
+  clear: both;
+}
+
+.subheading a {
+  color: #868e96;
+}
+
+.social-icons a {
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  background-color: #fff;
+  color: #000 ;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 2rem;
+  margin-right: 1rem;
+}
+
+.social-icons a:last-child {
+  margin-right: 0;
+}
+
+.social-icons a:hover {
+  color: #aaa;
+}
+
+.dev-icons {
+  font-size: 3rem;
+}
+
+.dev-icons .list-inline-item i:hover {
+  color: #BD5D38;
+}
+
+#sideNav .navbar-nav .nav-item .nav-link {
+  font-weight: 800;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+}
+
+#sideNav .navbar-toggler:focus {
+  outline-color: #d48a6e;
+}
+
+@media (min-width: 992px) {
+  #sideNav {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 30%;
+    height: 100vh;
+  }
+  #sideNav .navbar-brand {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: auto auto 0;
+    padding: 0.5rem;
+  }
+  #sideNav .navbar-brand .img-profile {
+    max-width: 10rem;
+    max-height: 10rem;
+    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+  }
+  #sideNav .navbar-collapse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    width: 100%;
+    margin-bottom: auto;
+  }
+  #sideNav .navbar-collapse .navbar-nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item {
+    display: block;
+  }
+  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
+    display: block;
+  }
+}
+
+section.resume-section {
+  //padding-top: 5rem  !important;
+  //padding-bottom: 5rem !important;
+  padding: 5rem !important;
+  max-width: 75rem;
+}
+
+section .resume-date {
+  float: left;
+  padding-bottom: 1rem;
+}
+
+section .resume-item {
+  margin-top: 1rem!important;
+}
+
+section.resume-section .resume-item .resume-date {
+  min-width: none;
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+  section.resume-section .resume-item .resume-date {
+    min-width: 10rem;
+  }
+}
+
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+.bg-primary {
+    background: url(http://i.imgur.com/C0H9chj.jpg);
+    background-size: 100% 100%;
+
+}
+
+.text-primary {
+  color: #BD5D38 !important;
+}
+
+a {
+  color: #BD5D38;
+}
+
+a:hover, a:focus, a:active {
+  color: #824027;
+}
+
+button.flat-butt {
+  width: 75px;
+  display: inline-block;
+  margin: 5px 2.5px;
+  border-radius: 6px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  padding: 5px 20px;
+  border: 0;
+  color: #FFF;
+  cursor: pointer;
+  outline: 0;
+  float: right;
+}
+button.flat-butt.edit {
+  background: #34495E;
+}
+button.flat-butt.cancle {
+  background: #777777;
+}
+button.flat-butt.edit:hover {
+  background: #005588;
+}
+button.flat-butt.cancle:hover {
+  background: #484848;
+}
