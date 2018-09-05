@@ -22,6 +22,7 @@ router.get('/login', function(req, res, next) {
   res.render('login', { title: 'login' });
 });
 
+/* POST Sign-Up */
 router.post('/sign-up', function(req, res, next){
   var body = req.body;
   var username = body.username;
@@ -49,15 +50,41 @@ router.post('/sign-up', function(req, res, next){
     salt = buf.toString('base64');
     console.log('salt : ', salt);
     crypto.pbkdf2(password, buf.toString('base64'), 108236, 64, 'sha512', (err, key) => {
-      var query = conn.query('insert into USER(UID, PWD, NAME, DATE, SALT) values(?,?,?,SYSDATE(),?)', [id, key.toString('base64'), username, buf.toString('base64')] , function(err, rows){
+      conn.query('insert into USER(UID, PWD, NAME, DATE, SALT) values(?,?,?,SYSDATE(),?)', [id, key.toString('base64'), username, buf.toString('base64')] , function(err, rows){
         console.log('pwd : ', key.toString('base64'));
         if(err) { 
           throw err;
         }
         console.log("Data inserted!");
-        res.render('login', { title: 'login' });
+        res.redirect('/login');
       })
     });
+  });
+});
+
+/* POST Sign-Up */
+router.post('/login', function(req, res, next){
+  var body = req.body;
+  var uid = body.uid;
+  var pwd = body.pwd;
+  var salt;
+
+  var sql = 'SELECT UID, NAME, PWD, SALT FROM USER WHERE UID = ?';
+  var params = [uid];
+  conn.query(sql, params, function(err, rows, fields){
+    if(err) {
+      console.log(err);
+    } else {
+      crypto.pbkdf2(pwd, rows[0].SALT, 108236, 64, 'sha512', (err, key) => {
+        console.log(key.toString('base64'));
+
+        if(key.toString('base64') === rows[0].PWD){
+          res.redirect('/');
+        }else {
+          res.redirect('/login');
+        }
+      });
+    }
   });
 });
 

@@ -10,17 +10,17 @@ block content
         .card.card-signin.my-5
           .card-body
             h6.gohome
-              a(href='index.html')
+              a(href='/')
                 i.fas.fa-home
             
             h5.card-title.text-center Sign In
-            form.form-signin
+            form.form-signin(method='post' action="/login")
               .form-label-group
-                input#inputEmail.form-control(type='email' placeholder='Email address' required autofocus)
-                label(for='inputEmail') Email address
+                input#inputID.form-control(type='text' name='uid' placeholder='ID' required autofocus)
+                label(for='inputID') ID
 
               .form-label-group
-                input#inputPassword.form-control(type='password' placeholder='Password' required)
+                input#inputPassword.form-control(type='password' name='pwd' placeholder='Password' required)
                 label(for='inputPassword') Password
 
               .custom-control.custom-checkbox.mb-3
