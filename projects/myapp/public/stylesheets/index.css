@@ -296,8 +296,12 @@ section .resume-item {
   margin-top: 1rem!important;
 }
 
-section.resume-section .resume-item .resume-date {
+section .resume-section .resume-item .resume-date {
   min-width: none;
+}
+
+section .resume-content {
+  min-width: -webkit-fill-available;
 }
 
 @media (min-width: 768px) {
