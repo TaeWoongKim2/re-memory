@@ -9,7 +9,32 @@ const crypto = require('crypto');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  // url http://a.com?id=xxxx
+  var uid = req.query.id;
+  var boardList = [];
+
+  if( req.query.id ) {
+    var sql = "SELECT TITLE, BCONTENT, DATE FROM `BOARD` WHERE UID=?";
+    conn.query(sql, uid, function(err, rows, fields){
+      if(err){
+        console.log(err);
+      } else {
+        for(var i=0; i < rows.length; i++){
+          var board = {
+		  			'title': rows[i].TITLE,
+		  			'content': rows[i].BCONTENT,
+		  			'date': rows[i].DATE
+          }
+          boardList.push(board);
+        }
+      }
+      //console.log(boardList);
+      res.render('index', { title: 'Memorize', boardList: boardList });
+    });
+  }
+  else {
+    res.render('index', { title: 'Memorize', boardList: boardList });
+  }
 });
 
 /* GET sing-up page. */
