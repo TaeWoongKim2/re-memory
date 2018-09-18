@@ -1,11 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 var mysql = require('mysql');
-var dbconfig = require('./config/database.js')
+var dbconfig = require('../config/database.js')
 var conn = mysql.createConnection(dbconfig);
 
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+const { User } = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -48,29 +52,26 @@ router.get('/login', function(req, res, next) {
 });
 
 /* POST Sign-Up */
-router.post('/sign-up', function(req, res, next){
-  var body = req.body;
-  var username = body.username;
-  var id = body.id;
-  var password = body.password;
-  var salt;
-
-  console.log(username);
-  console.log(id);
-  console.log(password);
-
-  /*
-  conn.query('SELECT * FROM USER', function(err, rows, fields){
-    conn.end();
-    if(!err){
-      console.log(rows);
-      console.log(fields);
-    }else {
-      console.log('query error : ' + err)
+router.post('/sign-up', isNotLoggedIn, async (req, res, next) => {
+  const { name, uid, pwd } = req.body;
+  try {
+    const exUser = await User.find({where: {uid} });
+    if (exUser) {
+      req.flash('joinError', '이미 가입된 아이디입니다.');
+      return res.redirect('/sign-up');
     }
-  })
-  */
-
+    const hash = await bcrypt.hash(pwd, 12);
+    await User.create({
+      uid,
+      pwd: hash,
+      name,
+    });
+    return res.redirect('/');
+  } catch (error) {
+    console.log(error);
+    return next(error);
+  }
+  /*
   crypto.randomBytes(64, (err, buf) => {
     salt = buf.toString('base64');
     console.log('salt : ', salt);
@@ -85,32 +86,28 @@ router.post('/sign-up', function(req, res, next){
       })
     });
   });
+  */
 });
 
-/* POST Sign-Up */
-router.post('/login', function(req, res, next){
-  var body = req.body;
-  var uid = body.uid;
-  var pwd = body.pwd;
-  var salt;
-
-  var sql = 'SELECT UID, NAME, PWD, SALT FROM USER WHERE UID = ?';
-  var params = [uid];
-  conn.query(sql, params, function(err, rows, fields){
-    if(err) {
-      console.log(err);
-    } else {
-      crypto.pbkdf2(pwd, rows[0].SALT, 108236, 64, 'sha512', (err, key) => {
-        console.log(key.toString('base64'));
-
-        if(key.toString('base64') === rows[0].PWD){
-          res.redirect('/');
-        }else {
-          res.redirect('/login');
-        }
-      });
+/* POST Login */
+router.post('/login', isNotLoggedIn, (req, res, next) => {
+  passport.authenticate('local', (authError, user, info) => {
+    if (authError) {
+      console.log(authError);
+      return next(authError);
     }
-  });
-});
+    if (!user) {
+      req.flash('loginError', info.message);
+      return res.redirect('/');
+    }
+    return req.login(user, (loginError) => {
+      if(loginError) {
+        console.log(loginError);
+        return next(loginError);
+      }
+      return res.redirect('/');
+    });
+  })(req, res, next); // 미들웨어 내의 미들웨어에는 (req, res, next)를 붙입니다.
+});  
 
 module.exports = router;

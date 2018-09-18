@@ -78,4 +78,4 @@ typings/
 .settings
 
 projects/\.metadata/
-projects/myapp/routes/config
+projects/myapp/config/

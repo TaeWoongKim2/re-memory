@@ -4,10 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var session = require('express-session');
+var redis = require('redis');
+var RedisStore = require('connect-redis')(session);
+var config = require('./config/config.json');
+var client = redis.createClient({host: '13.209.250.199', port: 6379});
+
+const passport = require('passport');
+const passportConfig = require('./passport');
+const flash = require('connect-flash');
+require('dotenv').config();
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const { sequelize } = require('./models');
+
 var app = express();
+sequelize.sync();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,8 +30,23 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(express.static(path.join(__dirname, 'public')));
+
+passportConfig(passport);
+
+app.use(session({
+  resave: true,
+  saveUninitialized: false,
+  secret: process.env.COOKIE_SECRET,
+  cookie: {
+    httpOnly: true,
+    secure: false
+  }
+}));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
