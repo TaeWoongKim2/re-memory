@@ -126,7 +126,7 @@
                                         [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
                                         [{ 'direction': 'rtl' }],                         // text direction
 
-                                        ['image', 'video', 'formula']
+                                        ['image', 'link', 'video', 'formula']
                                       ];
 
                   var options = {
@@ -134,16 +134,47 @@
                                   placeholder: '내용을 써주세요...',
                                   theme: 'snow',
                                   modules: {
-                                              toolbar: toolbarOptions,
+                                              toolbar: {
+                                                              container: toolbarOptions,
+                                                              handlers: {
+                                                                          /*image: imageHandler,*/
+                                                                          link: imageUrlHandler
+                                                              }
+                                              },
                                               imageResize: {
                                                               displaySize: true
-                                                            }
+                                              }
                                             }
                                 };
-                  var snow = new Quill('#editor', options);
+                  var quill = new Quill('#editor', options);
+
+                  function imageUrlHandler() {
+                      var range = this.quill.getSelection();
+                      var value = prompt('What is the image URL');
+                      this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+                  }
+
+                  function imageHandler() {
+                      const input = document.createElement('input');
+                      input.setAttribute('type', 'file');
+                      input.setAttribute('accept', 'image/*');
+                      input.click();
+
+                      // Listen upload local image and save to server
+                      input.onchange = () => {
+                        const file = input.files[0];
+
+                        // file type is only image.
+                        if (/^image\//.test(file.type)) {
+                          //saveToServer(file);
+                          console.warn('You could save to Server.');
+                        } else {
+                          console.warn('You could only upload images.');
+                        }
+                      };
+                  }
+
                 </script>
-
-
     					</div>
     				</div>
     			</div>
