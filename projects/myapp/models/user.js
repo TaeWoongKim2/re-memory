@@ -16,10 +16,6 @@ module.exports = (sequelize, DataTypes) => (
       type: DataTypes.DATE,
       allowNull: true,
     },
-    SALT: {
-      type: DataTypes.STRING(100),
-      allowNull: true,
-    },
   }, {
     timestamps: false,
     tableName: 'USER'

@@ -6,7 +6,6 @@ var mysql = require('mysql');
 var dbconfig = require('../config/database.js')
 var conn = mysql.createConnection(dbconfig);
 
-const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const { User } = require('../models');
@@ -57,14 +56,13 @@ router.post('/sign-up', isNotLoggedIn, async (req, res, next) => {
   try {
     const exUser = await User.find({where: {uid} });
     if (exUser) {
-      req.flash('joinError', '이미 가입된 아이디입니다.');
       return res.redirect('/sign-up');
     }
     const hash = await bcrypt.hash(pwd, 12);
     await User.create({
-      uid,
-      pwd: hash,
-      name,
+      UID: uid,
+      PWD: hash,
+      NAME: name,
     });
     return res.redirect('/');
   } catch (error) {
@@ -97,7 +95,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return next(authError);
     }
     if (!user) {
-      req.flash('loginError', info.message);
       return res.redirect('/');
     }
     return req.login(user, (loginError) => {

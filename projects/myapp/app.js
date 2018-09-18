@@ -8,11 +8,10 @@ var session = require('express-session');
 var redis = require('redis');
 var RedisStore = require('connect-redis')(session);
 var config = require('./config/config.json');
-var client = redis.createClient({host: '13.209.250.199', port: 6379});
+var client = redis.createClient();
 
 const passport = require('passport');
 const passportConfig = require('./passport');
-const flash = require('connect-flash');
 require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -36,15 +35,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 passportConfig(passport);
 
 app.use(session({
-  resave: true,
-  saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET,
+  store: new RedisStore({ host: config.redis.host, port: config.redis.port, client: client }),
+  key: config.session.key,
+  secret: config.session.secret,
   cookie: {
-    httpOnly: true,
-    secure: false
-  }
+    maxAge: 1000 * 60 * 60
+  },
+  saveUninitialized: false,
+  resave: false
 }));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
