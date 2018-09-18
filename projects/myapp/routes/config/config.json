@@ -1,0 +1,13 @@
+{
+    "rdb": {
+     
+    },
+    "redis": {
+      "host": "13.209.250.199",
+      "port": "6379"
+    },
+    "session": {
+      "key": "passport_session",
+      "secret": "s3cret!"
+    }
+  }
