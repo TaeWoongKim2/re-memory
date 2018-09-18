@@ -12,7 +12,8 @@ const { User } = require('../models');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // url http://a.com?id=xxxx
+  console.log(req.user);
+  // url http://a.com?id=xxxxr
   var uid = req.query.id;
   var boardList = [];
 
@@ -95,7 +96,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
       return next(authError);
     }
     if (!user) {
-      return res.redirect('/');
+      return res.redirect('/login');
     }
     return req.login(user, (loginError) => {
       if(loginError) {

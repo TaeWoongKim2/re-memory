@@ -8,7 +8,8 @@ var session = require('express-session');
 var redis = require('redis');
 var RedisStore = require('connect-redis')(session);
 var config = require('./config/config.json');
-var client = redis.createClient();
+//var client = redis.createClient();
+var redisClient = redis.createClient({host: '13.209.250.199', port: 6379});
 
 const passport = require('passport');
 const passportConfig = require('./passport');
@@ -29,13 +30,13 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser(process.env.COOKIE_SECRET));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 passportConfig(passport);
 
 app.use(session({
-  store: new RedisStore({ host: config.redis.host, port: config.redis.port, client: client }),
+  store: new RedisStore({client: redisClient }),
   key: config.session.key,
   secret: config.session.secret,
   cookie: {
